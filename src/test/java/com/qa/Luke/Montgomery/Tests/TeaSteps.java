@@ -30,7 +30,7 @@ public class TeaSteps {
 
 	MenuPage menu;
 	Home home;
-	CheckoutPage checkout = PageFactory.initElements(driver, CheckoutPage.class);
+	CheckoutPage checkout;
 
 	@Before
 	public void setUp() {
