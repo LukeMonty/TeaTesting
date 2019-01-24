@@ -43,6 +43,7 @@ public class TeaSteps {
 	@After
 	public void tearDown() {
 		driver.quit();
+		TeaTest.reports.endTest(test);
 	}
 
 	@Given("^the correct web address$")
