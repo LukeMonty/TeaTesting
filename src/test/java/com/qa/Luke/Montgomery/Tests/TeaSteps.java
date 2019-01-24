@@ -22,10 +22,10 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class StackSteps {
+public class TeaSteps {
 
 	WebDriver driver;
-	ExtentReports reports = new ExtentReports(Constants.REPORT_FILEPATH, false);
+
 	ExtentTest test;
 
 	MenuPage menu;
@@ -37,14 +37,12 @@ public class StackSteps {
 		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_FILEPATH);
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		test = reports.startTest("Navigate the website");
-
+		test = TeaTest.reports.startTest("Navigate the website");
 	}
-	
+
 	@After
 	public void tearDown() {
 		driver.quit();
-		reports.flush();
 	}
 
 	@Given("^the correct web address$")
@@ -65,7 +63,6 @@ public class StackSteps {
 	public void i_can_browse_a_list_of_the_available_products() {
 		menu = PageFactory.initElements(driver, MenuPage.class);
 		String expected = "Green Tea";
-		
 
 		if (!expected.equals(menu.checkGreenTeaTitle())) {
 			test.log(LogStatus.FAIL, "Navigated to the wrong page");
